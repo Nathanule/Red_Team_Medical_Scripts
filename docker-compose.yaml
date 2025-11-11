@@ -1,0 +1,11 @@
+services:
+  orthanc:
+    image: orthancteam/orthanc:latest
+    container_name: orthanc
+    ports:
+      - "4242:4242"   # DICOM
+      - "8042:8042"   # REST/UI
+    volumes:
+      - ./orthanc-db:/var/lib/orthanc
+      - ./orthanc-conf:/etc/orthanc
+    restart: unless-stopped
